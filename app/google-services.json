@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "652956749675",
+    "firebase_url": "https://floranest-cc484-default-rtdb.firebaseio.com",
+    "project_id": "floranest-cc484",
+    "storage_bucket": "floranest-cc484.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652956749675:android:2f63d348af23f1cfc9862e",
+        "android_client_info": {
+          "package_name": "com.example.floranest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPytTKvU9NTE4qI-kLPGaA1u9-HQu2mH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652956749675:android:1383ed4cbe052db1c9862e",
+        "android_client_info": {
+          "package_name": "com.example.project1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPytTKvU9NTE4qI-kLPGaA1u9-HQu2mH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

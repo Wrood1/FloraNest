@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FloraNest</string>
+    <string-array name="city_array">
+        <item>Select your city</item>
+        <item>Jeddah</item>
+        <item>Mecca</item>
+        <item>Medina</item>
+        <item>Taif</item>
+    </string-array>
+
+</resources>
