@@ -83,11 +83,29 @@ public class MainActivity extends AppCompatActivity {
 
                     // Redirect to the HomeActivity
                     startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                    finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "FAILED: " + task.getException().toString(), Toast.LENGTH_LONG).show();
+                    // Get the exception and display an appropriate message
+                    String errorMessage;
+                    if (task.getException() != null) {
+                        errorMessage = task.getException().getMessage();
+                    } else {
+                        errorMessage = "Login failed. Please try again.";
+                    }
 
+                    // Display more user-friendly messages based on common Firebase exceptions
+                    if (errorMessage.contains("no user record")) {
+                        errorMessage = "No account found with this email. Please sign up.";
+                    } else if (errorMessage.contains("password is invalid")) {
+                        errorMessage = "Incorrect password. Please try again.";
+                    } else if (errorMessage.contains("too many attempts")) {
+                        errorMessage = "Too many failed login attempts. Please try again later.";
+                    }
+
+                    Toast.makeText(getApplicationContext(), "FAILED: " + errorMessage, Toast.LENGTH_LONG).show();
                 }
             }
         });
+
     }
 }

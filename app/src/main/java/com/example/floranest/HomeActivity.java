@@ -1,6 +1,8 @@
 package com.example.floranest;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -59,5 +61,10 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(HomeActivity.this, "Error loading data: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    // Redirect to Profile screen
+    public void onClickProfile(View view) {
+        startActivity(new Intent(this, ProfileActivity.class));
     }
 }

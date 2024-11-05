@@ -8,13 +8,13 @@
     tools:context=".HomeActivity">
 
     <!-- Greeting and Header Section -->
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:background="#BAEFBC"
-        android:gravity="center_vertical">
+        android:padding="15dp"
+        android:orientation="horizontal"
+        android:background="#BAEFBC">
 
         <TextView
             android:id="@+id/greeting_text"
@@ -25,32 +25,37 @@
             android:textStyle="bold"
             android:textSize="30dp"
             android:textColor="#FFFFFF"
+            android:layout_gravity="left"
+            android:layout_marginTop="45dp"
             android:layout_marginBottom="8dp"/>
 
         <TextView
             android:id="@+id/subtitle_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/greeting_text"
             android:text="Let's Learn More About Plants"
             android:textSize="20dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:textColor="#FFFFFF"/>
-    </LinearLayout>
+            android:textColor="#FFFFFF"
+            android:layout_gravity="left" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:gravity="top|start"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/floranest_logo" />
+
+    </RelativeLayout>
 
     <!-- Featured Image Section -->
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="120dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="8dp"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/floranest_logo"/>
-
     <ImageView
         android:id="@+id/featured_image"
         android:layout_width="350dp"
         android:layout_height="200dp"
-        android:layout_marginTop="200dp"
+        android:layout_below="@id/header"
         android:layout_centerHorizontal="true"
         android:contentDescription="Featured greenhouse image"
         android:src="@drawable/image"/>
@@ -66,6 +71,39 @@
         android:text="Plant Types"
         android:textSize="18sp"
         android:textColor="#2E7D32"/>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/plant_types_title"
+        android:padding="10dp"
+        android:orientation="horizontal">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/plant_types"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/scrollView"
+            android:backgroundTint="@color/white"
+            android:onClick="onClick"
+            android:text=""
+            android:textColor="#2E7D32"
+            android:textSize="14sp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scrollView"
+        android:backgroundTint="@color/white"
+        android:onClick="onClick"
+        android:text=""
+        android:layout_marginLeft="10dp"
+        android:textColor="#2E7D32"
+        android:textSize="14sp" />
+    </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/plant_types_read_more"
@@ -86,19 +124,50 @@
         android:id="@+id/forum_posts_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/plant_types_read_more"
+        android:layout_below="@id/scrollView"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:text="Forum Posts"
         android:textSize="18sp"
         android:textColor="#2E7D32"/>
-
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forum_posts_title"
+        android:padding="10dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/forum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/scrollView2"
+                android:backgroundTint="@color/white"
+                android:onClick="onClick"
+                android:text=""
+                android:textColor="#2E7D32"
+                android:textSize="14sp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/scrollView"
+                android:backgroundTint="@color/white"
+                android:onClick="onClick"
+                android:text=""
+                android:layout_marginLeft="10dp"
+                android:textColor="#2E7D32"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
     <Button
         android:id="@+id/forum_posts_read_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/plant_types_read_more"
+        android:layout_below="@id/scrollView"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:text="Read More >>"
@@ -118,39 +187,45 @@
         android:padding="8dp">
 
         <!-- Bottom Navigation Icons -->
-        <ImageView
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/ic_profile"
-            android:contentDescription="Profile"/>
+            android:contentDescription="Profile"
+            android:backgroundTint="@color/white"
+            android:onClick="onClickProfile"/>
 
-        <ImageView
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/ic_plant_types"
+            android:backgroundTint="@color/white"
             android:contentDescription="Plant Types"/>
 
-        <ImageView
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/ic_home_green"
+            android:backgroundTint="@color/white"
             android:contentDescription="Home"/>
 
-        <ImageView
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/ic_posts"
+            android:backgroundTint="@color/white"
             android:contentDescription="Posts"/>
 
-        <ImageView
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/ic_nurseries"
+            android:backgroundTint="@color/white"
             android:contentDescription="Nurseries"/>
     </LinearLayout>
 

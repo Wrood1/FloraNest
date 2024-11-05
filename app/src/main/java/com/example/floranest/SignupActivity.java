@@ -66,7 +66,7 @@ public class SignupActivity extends AppCompatActivity {
             Toast.makeText(SignupActivity.this, "Email is required", Toast.LENGTH_SHORT).show();
             return; // Exit if email is empty
         }
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(SignupActivity.this, "Please provide valid Email", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -93,31 +93,53 @@ public class SignupActivity extends AppCompatActivity {
 
 
         Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-        @Override
-        public void onComplete(@NonNull Task<AuthResult> task) {
-            if (task.isSuccessful()){
-                User user = new User(name, email,password,city);
-                FirebaseDatabase.getInstance().getReference("users").child(
-                                FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()){
-                                    Toast.makeText(getApplicationContext(), "User has been registered!", Toast.LENGTH_LONG).show();
-                                    //redirect to the main page
-                                    startActivity(new Intent(SignupActivity.this, MainActivity.class));
-
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    User user = new User(name, email, password, city);
+                    FirebaseDatabase.getInstance().getReference("Users").child(
+                            FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "User has been registered!", Toast.LENGTH_LONG).show();
+                                // Redirect to the main page
+                                startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                                finish();
+                            } else {
+                                String errorMessage;
+                                if (task.getException() != null) {
+                                    errorMessage = task.getException().getMessage();
+                                } else {
+                                    errorMessage = "Registration failed. Please try again.";
                                 }
-                                else{
-                                    Toast.makeText(getApplicationContext(), "FAILED: "+task.getException().toString(), Toast.LENGTH_LONG).show();
 
+                                // Display more user-friendly messages based on common Firebase exceptions
+                                if (errorMessage.contains("email address is already in use")) {
+                                    errorMessage = "This email is already registered. Please log in.";
                                 }
+
+                                Toast.makeText(getApplicationContext(), "FAILED: " + errorMessage, Toast.LENGTH_LONG).show();
                             }
-                        });
-            }
-            else{
-                Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_LONG).show();
-                }
+                        }
+                    });
+                } else {
+                    String errorMessage;
+                    if (task.getException() != null) {
+                        errorMessage = task.getException().getMessage();
+                    } else {
+                        errorMessage = "Registration failed. Please try again.";
+                    }
 
+                    // Display more user-friendly messages based on common Firebase exceptions
+                    if (errorMessage.contains("The email address is badly formatted")) {
+                        errorMessage = "Please enter a valid email address.";
+                    } else if (errorMessage.contains("The password is invalid")) {
+                        errorMessage = "Password must be at least 6 characters long.";
+                    }
+
+                    Toast.makeText(getApplicationContext(), "FAILED: " + errorMessage, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
