@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F5F5F5"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+
+    <!-- Greeting and Header Section -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:padding="15dp"
+        android:orientation="horizontal"
+        android:background="#BAEFBC">
+
+        <TextView
+            android:id="@+id/greeting_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello,"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="left"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/subtitle_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/greeting_text"
+            android:text="Let's Learn More About Plants"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="left" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:gravity="top|start"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/floranest_logo" />
+
+    </RelativeLayout>
+
+    <!-- Featured Image Section -->
+    <ImageView
+        android:id="@+id/featured_image"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="Featured greenhouse image"
+        android:src="@drawable/image_home_page_plant"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Plant Types Section -->
+        <TextView
+            android:id="@+id/plant_types_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/featured_image"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="16dp"
+            android:text="Plant Types"
+            android:textSize="18sp"
+            android:textColor="#2E7D32"/>
+
+    <!-- Horizontal Scroll View Section for Plant Types -->
+    <HorizontalScrollView
+        android:id="@+id/plant_type_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="horizontal"
+        android:layout_below="@+id/plant_types_title">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp">
+
+                <ImageButton
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="Annual Flowers Plant Type"
+                    android:src="@drawable/image_annual_flowers"
+                    android:layout_gravity="center_horizontal"
+                    android:clickable="false"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_margin="15dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center_vertical"
+                    android:text="Annual Flowers"
+                    android:textColor="#FFFFFF"
+                    android:textSize="23dp"
+                    />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp">
+
+                <ImageButton
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="Vegetable Plants Type"
+                    android:src="@drawable/image_vegetable_plants"
+                    android:layout_gravity="center_horizontal"
+                    android:clickable="false"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_margin="15dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center_vertical"
+                    android:text="Vegetable Plants"
+                    android:textColor="#FFFFFF"
+                    android:textSize="23dp"
+                    />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp">
+
+                <ImageButton
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="Herbs Plant Type"
+                    android:src="@drawable/image_herbs"
+                    android:layout_gravity="center_horizontal"
+                    android:clickable="false"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_margin="15dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center_vertical"
+                    android:text="Herbs"
+                    android:textColor="#FFFFFF"
+                    android:textSize="23dp"
+                    />
+
+            </FrameLayout>
+
+            <!-- Discover More Button (only card that is clickable) -->
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="20dp"
+                android:background="#D8C5C5C5"
+                android:padding="15dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:gravity="center_vertical"
+                android:text="Discover More >>"
+                android:textColor="#FFFFFF"
+                android:textSize="23dp"
+                android:onClick="onClickPlantTypes"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+
+    <!-- Forum Posts Section -->
+    <TextView
+        android:id="@+id/forum_posts_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/plant_type_scroll"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text="Forum Posts"
+        android:textSize="18sp"
+        android:textColor="#2E7D32"/>
+
+    <HorizontalScrollView
+        android:id="@+id/forum_post_scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forum_posts_title"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#43C5C5C5"
+                android:text=""
+                android:textColor="#2E7D32"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp"
+                android:clickable="false"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#43C5C5C5"
+                android:text=""
+                android:textColor="#2E7D32"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp"
+                android:clickable="false"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#43C5C5C5"
+                android:text=""
+                android:textColor="#2E7D32"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp"
+                android:clickable="false"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#CAEBA0"
+                android:text="Discover More >>"
+                android:textColor="#2E7D32"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp"/>
+                <!--add android:onClick=""-->
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <LinearLayout
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:padding="8dp">
+
+        <!-- Bottom Navigation Icons -->
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Profile"
+            android:onClick="onClickProfile"
+            android:src="@drawable/ic_profile" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Plant Types"
+            android:onClick="onClickPlantTypes"
+            android:src="@drawable/ic_plant_types" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Home"
+            android:src="@drawable/ic_home_green" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_posts"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Posts"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_nurseries"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Nurseries"/>
+    </LinearLayout>
+
+</RelativeLayout>
