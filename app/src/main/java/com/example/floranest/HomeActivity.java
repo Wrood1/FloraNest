@@ -67,4 +67,10 @@ public class HomeActivity extends AppCompatActivity {
     public void onClickProfile(View view) {
         startActivity(new Intent(this, ProfileActivity.class));
     }
+
+    // Redirect to Plant Types screen
+    public void onClickPlantTypes(View view) {
+        Intent intent = new Intent(this,PlantsTypes.class);
+        startActivity(intent);
+    }
 }
